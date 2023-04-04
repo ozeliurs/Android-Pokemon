@@ -1,5 +1,6 @@
 package com.rallo.pokemon;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,10 +9,11 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements PostExecuteActivity<Pokemon> {
-    public static String language = "English";
+    public static String language = "english";
     private final String TAG = "frallo " + getClass().getSimpleName();
 
     @Override
@@ -20,9 +22,8 @@ public class MainActivity extends AppCompatActivity implements PostExecuteActivi
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.go).setOnClickListener(clic -> {
-            // String url = "https://raw.githubusercontent.com/fanzeyi/pokemon.json/17d33dc111ffcc12b016d6485152aa3b1939c214/pokedex.json";
-            // new HttpAsyncGet<>(url, Pokemon.class, this, new ProgressDialog(clic.getContext()));
-
+            String url = "https://raw.githubusercontent.com/fanzeyi/pokemon.json/17d33dc111ffcc12b016d6485152aa3b1939c214/pokedex.json";
+            new HttpAsyncGet<>(url, Pokemon.class, this, new ProgressDialog(clic.getContext()));
             // redirect to second activity
             setContentView(R.layout.result_activity);
         });
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements PostExecuteActivi
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                language = "English";
+                language = "english";
             }
         });
     }
@@ -44,7 +45,10 @@ public class MainActivity extends AppCompatActivity implements PostExecuteActivi
 
     @Override
     public void onPostExecutePokemons(List<Pokemon> itemList) {
-        Pokemon pokemonFirst = itemList.get(0);
-        Log.d(TAG, "First pokemon = " + pokemonFirst);
+        Pokemon.completeList = itemList;
+        Pokemon pokemonFirst = itemList.get(16);
+        Log.d(TAG, "16 pokemon = " + pokemonFirst);
+        Pokemon.boost(290);
+        Log.d(TAG, "16 pokemon = " + pokemonFirst);
     }
 }
