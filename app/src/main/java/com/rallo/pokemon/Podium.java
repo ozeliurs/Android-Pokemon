@@ -4,8 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,10 +62,38 @@ public class Podium extends Fragment {
         }
     }
 
+    List<Pokemon> getPodium() {
+        return Pokemon.completeList.stream()
+                .sorted((p1, p2) -> p2.getRank() - p1.getRank())
+                .limit(3)
+                .collect(Collectors.toList());
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_podium, container, false);
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        updateView();
+
+    }
+
+    private void updateView() {
+        View view = getView();
+        List<Pokemon> podium = getPodium();
+        assert view != null;
+        ((TextView) view.findViewById(R.id.top1_name)).setText(podium.get(0).getName());
+        ((TextView) view.findViewById(R.id.top2_name)).setText(podium.get(1).getName());
+        ((TextView) view.findViewById(R.id.top3_name)).setText(podium.get(2).getName());
+
+        Picasso.get().load(podium.get(0).getPictureURL()).into((ImageView) view.findViewById(R.id.top1));
+        Picasso.get().load(podium.get(1).getPictureURL()).into((ImageView) view.findViewById(R.id.top2));
+        Picasso.get().load(podium.get(2).getPictureURL()).into((ImageView) view.findViewById(R.id.top3));
     }
 }

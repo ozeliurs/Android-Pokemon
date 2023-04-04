@@ -24,8 +24,7 @@ public class MainActivity extends AppCompatActivity implements PostExecuteActivi
         findViewById(R.id.go).setOnClickListener(clic -> {
             String url = "https://raw.githubusercontent.com/fanzeyi/pokemon.json/17d33dc111ffcc12b016d6485152aa3b1939c214/pokedex.json";
             new HttpAsyncGet<>(url, Pokemon.class, this, new ProgressDialog(clic.getContext()));
-            // redirect to second activity
-            setContentView(R.layout.result_activity);
+
         });
 
         // language spinner listener
@@ -50,5 +49,7 @@ public class MainActivity extends AppCompatActivity implements PostExecuteActivi
         Log.d(TAG, "16 pokemon = " + pokemonFirst);
         Pokemon.boost(290);
         Log.d(TAG, "16 pokemon = " + pokemonFirst);
+        // redirect to second activity
+        setContentView(R.layout.result_activity);
     }
 }
