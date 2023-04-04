@@ -1,5 +1,6 @@
 package com.rallo.pokemon;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
