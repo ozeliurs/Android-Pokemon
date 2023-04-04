@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.rallo.pokemon.placeholder.PlaceholderContent;
+
 /**
  * A fragment representing a list of Items.
  */
-public class ListPokemon extends Fragment {
+public class PokemonList extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -25,13 +27,13 @@ public class ListPokemon extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ListPokemon() {
+    public PokemonList() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ListPokemon newInstance(int columnCount) {
-        ListPokemon fragment = new ListPokemon();
+    public static PokemonList newInstance(int columnCount) {
+        PokemonList fragment = new PokemonList();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -50,7 +52,7 @@ public class ListPokemon extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_pokemon_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_pokemon_list_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -61,7 +63,7 @@ public class ListPokemon extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(Pokemon.completeList));
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter2(PlaceholderContent.ITEMS));
         }
         return view;
     }

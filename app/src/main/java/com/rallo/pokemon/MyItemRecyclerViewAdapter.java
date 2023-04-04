@@ -1,14 +1,15 @@
 package com.rallo.pokemon;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.rallo.pokemon.placeholder.PlaceholderContent.PlaceholderItem;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.rallo.pokemon.databinding.FragmentListPokemonBinding;
+import com.rallo.pokemon.placeholder.PlaceholderContent.PlaceholderItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -18,9 +19,9 @@ import java.util.List;
  */
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<Pokemon> mValues;
 
-    public MyItemRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public MyItemRecyclerViewAdapter(List<Pokemon> items) {
         mValues = items;
     }
 
@@ -34,8 +35,12 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.pokemon_name.setText(mValues.get(position).getName());
+        holder.pokemon_life.setText(mValues.get(position).getLife());
+        holder.pokemon_attack.setText(mValues.get(position).getAttack());
+        holder.pokemon_defense.setText(mValues.get(position).getDefense());
+        holder.pokemon_speed.setText(mValues.get(position).getSpeed());
+        Picasso.get().load(mValues.get(position).getPictureURL()).into(holder.image);
     }
 
     @Override
@@ -44,19 +49,23 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public PlaceholderItem mItem;
+        public final ImageView image;
+        public final TextView pokemon_speed;
+        public final TextView pokemon_defense;
+        public final TextView pokemon_attack;
+        public final TextView pokemon_life;
+        public final TextView pokemon_name;
+        public Pokemon mItem;
 
         public ViewHolder(FragmentListPokemonBinding binding) {
             super(binding.getRoot());
-            mIdView = binding.itemNumber;
-            mContentView = binding.content;
+            pokemon_name = binding.textView;
+            pokemon_speed = binding.pokemonSpeed;
+            pokemon_defense = binding.pokemonDefense;
+            pokemon_attack = binding.pokemonAttack;
+            pokemon_life = binding.pokemonLife;
+            image = binding.pokemonImage;
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
     }
 }
