@@ -59,13 +59,13 @@ public class Pokemon {
      * change speed of all NORMAL Type Pokemon
      * @param boost
      */
-    public static void boost(int boost) {
-        completeList.forEach( pokemon -> {
-            if(pokemon.type.contains(Types.NORMAL)) {
-                pokemon.base.put(Stats.SPEED.toString(), pokemon.get.get(Stats.Speed.toString()) + boost);
-            }
-        });
-    }
+//    public static void boost(int boost) {
+//        completeList.forEach( pokemon -> {
+//            if(pokemon.type.contains(Types.NORMAL)) {
+//                pokemon.base.put(Stats.SPEED.toString(), pokemon.get.get(Stats.SPEED.toString()) + boost);
+//            }
+//        });
+//    }
 }
 
 
