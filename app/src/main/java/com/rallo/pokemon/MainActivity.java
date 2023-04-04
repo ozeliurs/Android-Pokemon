@@ -1,14 +1,12 @@
 package com.rallo.pokemon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements PostExecuteActivi
         findViewById(R.id.go).setOnClickListener(clic -> {
             String url = "https://raw.githubusercontent.com/fanzeyi/pokemon.json/17d33dc111ffcc12b016d6485152aa3b1939c214/pokedex.json";
             new HttpAsyncGet<>(url, Pokemon.class, this, new ProgressDialog(clic.getContext()));
+            // redirect to second activity
+            setContentView(R.layout.activity_main2);
         });
 
         // language spinner listener
