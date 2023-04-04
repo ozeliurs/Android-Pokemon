@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements PostExecuteActivi
             // new HttpAsyncGet<>(url, Pokemon.class, this, new ProgressDialog(clic.getContext()));
 
             // redirect to second activity
-            setContentView(R.layout.activity_main2);
+            setContentView(R.layout.result_activity);
         });
 
         // language spinner listener
