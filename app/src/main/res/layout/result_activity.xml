@@ -10,24 +10,25 @@
     android:background="@drawable/forest">
 
     <!-- Podium Fragment -->
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/podium_fragment"
         android:name="com.rallo.pokemon.PodiumPokemonFragment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toLeftOf="@id/pokemon_list_fragment"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_podium" />
 
     <!-- Pokemon List Fragment -->
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/pokemon_list_fragment"
         android:name="com.rallo.pokemon.ListPokemon"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/podium_fragment"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
