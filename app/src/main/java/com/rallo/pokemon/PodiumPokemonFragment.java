@@ -88,9 +88,9 @@ public class PodiumPokemonFragment extends Fragment {
         View view = getView();
         List<Pokemon> podium = getPodium();
         assert view != null;
-        ((TextView) view.findViewById(R.id.top1_name)).setText(podium.get(0).getName());
-        ((TextView) view.findViewById(R.id.top2_name)).setText(podium.get(1).getName());
-        ((TextView) view.findViewById(R.id.top3_name)).setText(podium.get(2).getName());
+        ((TextView) view.findViewById(R.id.top1_name)).setText(podium.get(0).getName() + " - " + podium.get(0).getRank() + "pts");
+        ((TextView) view.findViewById(R.id.top2_name)).setText(podium.get(1).getName() + " - " + podium.get(1).getRank() + "pts");
+        ((TextView) view.findViewById(R.id.top3_name)).setText(podium.get(2).getName() + " - " + podium.get(2).getRank() + "pts");
 
         Picasso.get().load(podium.get(0).getPictureURL()).into((ImageView) view.findViewById(R.id.top1));
         Picasso.get().load(podium.get(1).getPictureURL()).into((ImageView) view.findViewById(R.id.top2));
