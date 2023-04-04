@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ResultActivity"
     android:screenOrientation="landscape"
-    android:configChanges="orientation|screenSize">
+    android:configChanges="orientation|screenSize"
+    android:background="@drawable/forest">
 
     <!-- Podium Fragment -->
     <fragment
         android:id="@+id/podium_fragment"
-        android:name="com.rallo.pokemon.Podium"
+        android:name="com.rallo.pokemon.PodiumPokemonFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
