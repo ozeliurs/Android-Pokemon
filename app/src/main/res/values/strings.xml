@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pokemon</string>
+    <string name="adapter_n_singleton_n_fragments_n_observer_observable">-Adapter\n-Singleton\n-Fragments\n-Observer/Observable</string>
+    <string name="catch_em_all">Catch\'em all</string>
 </resources>
