@@ -113,9 +113,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="Podium"
+        android:padding="0dp"
         android:src="@drawable/podium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:adjustViewBounds="true"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
