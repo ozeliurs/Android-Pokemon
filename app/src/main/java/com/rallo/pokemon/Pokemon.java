@@ -63,6 +63,30 @@ public class Pokemon {
         return 4 * base.get("Speed") + 3 * base.get("Attack") + 2 * base.get("Defense") + base.get("HP");
     }
 
+    public String getLife() {
+        return base.get("HP").toString();
+    }
+
+    public String getAttack() {
+        return base.get("Attack").toString();
+    }
+
+    public String getDefense() {
+        return base.get("Defense").toString();
+    }
+
+    public String getSpeed() {
+        return base.get("Speed").toString();
+    }
+
+    public String getType() {
+        return type.toString();
+    }
+
+
+
+
+
     public String getName() {
         return name.get(MainActivity.language.toLowerCase());
     }
